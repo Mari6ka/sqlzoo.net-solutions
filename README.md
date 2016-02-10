@@ -1,6 +1,6 @@
 #sqlzoo.net-solutions
-<span style="color:orange;">Word up</span>
-<h4><style=color"green">SELECT basics</h4>
+
+<h4><style="color: #00EE00">SELECT basics</style></h4>
 
 1. 
 Modify it to show the population of Germany
