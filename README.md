@@ -129,8 +129,8 @@ Show the name, the original continent and the new continent of all countries.
 ```sql
 SELECT name, continent, CASE 
  WHEN continent ='Oceania' THEN 'Australasia'
- WHEN continent  in ('Eurasia','Turkey' ) THEN 'Europe/Asia'
- WHEN continent= 'Caribbean' and name like 'B%' THEN 'North America' 
+ WHEN continent  IN ('Eurasia','Turkey' ) THEN 'Europe/Asia'
+ WHEN continent= 'Caribbean' AND name LIKE 'B%' THEN 'North America' 
  WHEN continent = 'Caribbean' THEN 'South America'
  ELSE continent END
 FROM world
