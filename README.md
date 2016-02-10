@@ -1,9 +1,9 @@
 #sqlzoo.net-solutions
 
-<h4>SELECT basics</h4>
+*##SELECT basics*
 
-*1.
-Modify it to show the population of Germany*
+1.
+Modify it to show the population of Germany
 ```sql
 SELECT population 
 FROM world
