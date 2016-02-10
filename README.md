@@ -1,4 +1,5 @@
-sqlzoo.net-solutions
+#sqlzoo.net-solutions
+
 SELECT basics
 
 1. 
