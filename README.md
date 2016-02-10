@@ -2,8 +2,8 @@
 
 <h4>SELECT basics</h4>
 
-1.
-Modify it to show the population of Germany
+*1.
+Modify it to show the population of Germany*
 ```sql
 SELECT population 
 FROM world
