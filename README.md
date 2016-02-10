@@ -4,7 +4,7 @@
 
 1. 
 Modify it to show the population of Germany
-```
+```sql
 SELECT population 
 FROM world
 WHERE name = 'Germany'
