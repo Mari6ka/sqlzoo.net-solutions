@@ -1,4 +1,4 @@
-# sqlzoo.net-solutions
+sqlzoo.net-solutions
 SELECT basics
 
 1. 
@@ -9,3 +9,4 @@ SELECT population
 FROM world
 
 WHERE name = 'Germany'
+
