@@ -1,6 +1,5 @@
 #sqlzoo.net-solutions
-html
-font color="red"
+<span style="color:orange;">Word up</span>
 <h4><style=color"green">SELECT basics</h4>
 
 1. 
