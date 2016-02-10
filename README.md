@@ -73,18 +73,80 @@ SELECT name
 FROM world
 WHERE name like ('%United%')
 ```
-4.
+7.
+Two ways to be big: A country is big if it has an area of more than 3 million sq km or it has a population of more than 250 million.
+Show the countries that are big by area or big by population. Show name, population and area.
+```sql
+SELECT name, population, area 
+FROM world
+WHERE area>3000000 or population>250000000
+```
+8.
+Show the countries that are big by area or big by population but not both. Show name, population and area.
+```sql
+SELECT name, population, area 
+FROM world
+WHERE area>3000000  xor population>250000000
+```
+9.
+For South America show population in millions and GDP in billions to 2 decimal places.
+```sql
+SELECT name, ROUND(population/1000000,2), ROUND(GDP/1000000000,2) 
+FROM world
+WHERE continent =  'South America'
+```
+10.
+Show per-capita GDP for the trillion dollar countries to the nearest $1000.
+```sql
+SELECT name, Round(GDP/population,-3) 
+FROM  world
+WHERE GDP>=1000000000000
+```
+11.
+Show the name - but substitute Australasia for Oceania - for countries beginning with N.
+```sql
+SELECT name, CASE
+ WHEN continent='Oceania' THEN 'Australasia'
+ ELSE continent END "CASE continent"
+FROM world
+WHERE name LIKE 'N%';
+```
+12.
+Show the name and the continent - but substitute Eurasia for Europe and Asia; substitute America - for each country in North America or South America or Caribbean. Show countries beginning with A or B
+```sql
+SELECT name, CASE 
+ WHEN continent IN ('Europe', 'Asia') THEN 'Eurasia'
+ WHEN continent IN ('North America', 'South America', 'Caribbean') THEN 'America'
+ ELSE continent END
+FROM world
+```
+13.
+Put the continents right...
+Oceania becomes Australasia
+Countries in Eurasia and Turkey go to Europe/Asia
+Caribbean islands starting with 'B' go to North America, other Caribbean islands go to South America
+Show the name, the original continent and the new continent of all countries.
+```sql
+SELECT name, continent, CASE 
+ WHEN continent ='Oceania' THEN 'Australasia'
+ WHEN continent  in ('Eurasia','Turkey' ) THEN 'Europe/Asia'
+ WHEN continent= 'Caribbean' and name like 'B%' THEN 'North America' 
+ WHEN continent = 'Caribbean' THEN 'South America'
+ ELSE continent END
+FROM world
+```
+12.
 ```sql
 ```
-4.
+12.
 ```sql
 ```
-4.
+12.
 ```sql
 ```
-4.
+12.
 ```sql
 ```
-4.
+12.
 ```sql
 ```
