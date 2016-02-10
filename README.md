@@ -1,6 +1,6 @@
 #sqlzoo.net-solutions
 
-SELECT basics
+<h4><font color=|#3399FF|>SELECT basics</font></h4>
 
 1. 
 Modify it to show the population of Germany
