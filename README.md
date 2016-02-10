@@ -1,6 +1,6 @@
 #sqlzoo.net-solutions
 
-*<h4>SELECT basics</h4>*
+*<h3>SELECT basics</h3>*
 
 1.
 Modify it to show the population of Germany
@@ -30,7 +30,7 @@ SELECT name, area
 FROM world
 WHERE area BETWEEN 200000 AND 250000
 ```
-<h4>SELECT from WORLD</h4>
+*<h3>SELECT from WORLD</h3>*
 1.
 Observe the result of running a simple SQL command.
 ```sql
@@ -135,7 +135,7 @@ SELECT name, continent, CASE
  ELSE continent END
 FROM world
 ```
-<h4>SELECT from Nobel</h4>
+*<h3>SELECT from Nobel</h3>*
 1.
 Change the query shown so that it displays Nobel prizes for 1950.
 ```sql
@@ -245,7 +245,7 @@ FROM nobel
 WHERE yr = 1984
 ORDER BY subject IN ('Chemistry', 'Physics'), subject, winner
 ```
-<h4>SELECT within SELECT</h4>
+*<h3>SELECT within SELECT</h3>*
 1.
 List each country name where the population is larger than that of 'Russia'.
 ```sql
@@ -328,7 +328,7 @@ WHERE population > ALL (SELECT population*3 FROM world y
                         WHERE y.continent=x.continent AND y.name <> x.name)
 ORDEER BY name
 ```
-<h4> SUM and COUNT</h4>
+*<h3>SUM and COUNT</h3>*
 1.
 Show the total population of the world
 ```sql
@@ -385,7 +385,7 @@ FROM world
 GROUP BY continent
 HAVING SUM(population) >= 100000000
 ```
-<h4>The JOIN operation</h4>
+*<h3>The JOIN operation</h3>*
 1.
 Modify it to show the matchid and player name for all goals scored by Germany. To identify German players, check for: teamid = 'GER'
 ```sql
@@ -482,7 +482,7 @@ FROM game LEFT JOIN goal ON matchid = id
 GROUP BY mdate, matchid, team1, team2
 ORDER BY mdate, matchid, team1, team2
 ```
-<h4>More JOIN operations</h4>
+*<h3>More JOIN operations</h3>*
 1.
 List the films where the yr is 1962 [Show id, title]
 ```sql
