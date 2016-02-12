@@ -621,7 +621,7 @@ AND movieid IN (SELECT movieid
                 FROM casting JOIN actor ON actorid = actor.id 
                  WHERE name = 'Art Garfunkel')
 ```
-*<h4>Using Null</h4>*
+*<h3>Using Null</h3>*
 1.
 List the teachers who have NULL for their department.
 ```sql
