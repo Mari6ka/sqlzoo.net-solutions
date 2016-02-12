@@ -540,59 +540,93 @@ WHERE movieid = 11768
 Obtain the cast list for the film 'Alien'
 ```sql
 SELECT name 
-FROM 
-(actor JOIN casting ON actor.id=actorid)
- JOIN movie ON movie.id=movieid
+FROM actor JOIN casting ON actor.id=actorid
+           JOIN movie ON movie.id=movieid
 WHERE title= 'Alien'
 ```
 9.
 List the films in which 'Harrison Ford' has appeared
 ```sql
 SELECT title 
-FROM 
-(actor JOIN casting ON actor.id=actorid)
- JOIN movie ON movie.id=movieid
+FROM actor JOIN casting ON actor.id=actorid
+           JOIN movie ON movie.id=movieid
 WHERE name=  'Harrison Ford'
 ```
 10.
 List the films where 'Harrison Ford' has appeared - but not in the starring role. [Note: the ord field of casting gives the position of the actor. If ord=1 then this actor is in the starring role]
 ```sql
 SELECT title
-FROM (actor JOIN casting ON actor.id=actorid)
-      JOIN movie ON movie.id=casting.movieid
+FROM actor JOIN casting ON actor.id=actorid
+           JOIN movie ON movie.id=casting.movieid
 WHERE name= 'Harrison Ford' AND  ord!=1 
 ```
 11.
 List the films together with the leading star for all 1962 films.
 ```sql
 SELECT title, name
-FROM (actor JOIN casting ON actor.id=actorid)
-      JOIN movie ON movie.id=casting.movieid
+FROM actor JOIN casting ON actor.id=actorid
+           JOIN movie ON movie.id=casting.movieid
 WHERE yr=1962 AND ord=1
 ```
 12.
 Which were the busiest years for 'John Travolta', show the year and the number of movies he made each year for any year in which he made more than 2 movies.
 ```sql
 SELECT yr, COUNT(title) 
-FROM movie JOIN casting ON movie.id=movieid
-           JOIN actor ON actorid=actor.id
-WHERE name='John Travolta'
+FROM movie JOIN casting ON movie.id = movieid
+           JOIN actor ON actorid = actor.id
+WHERE name = 'John Travolta'
 GROUP BY yr
-HAVING COUNT(title)=(SELECT MAX(c) 
-FROM  (SELECT yr,COUNT(title) AS c 
-FROM  movie JOIN casting ON movie.id=movieid
-            JOIN actor   ON actorid=actor.id
- WHERE name='John Travolta'  GROUP BY yr) AS t
-)
+HAVING COUNT(title) = (SELECT MAX(n) 
+         FROM(SELECT yr,COUNT(title) AS n
+               FROM movie JOIN casting ON movie.id =movieid
+                          JOIN actor ON actorid = actor.id
+                          WHERE name = 'John Travolta'
+                          GROUP BY yr) AS m
+                      )
 ```
 13.
+List the film title and the leading actor for all of the films 'Julie Andrews' played in.
 ```sql
+SELECT title, name 
+FROM movie JOIN casting ON movie.id=movieid
+           JOIN actor   ON actorid=actor.id
+WHERE ord=1 and movieid IN 
+  (SELECT movieid FROM casting WHERE actorid IN    
+          ( SELECT id FROM actor WHERE name='Julie Andrews'))
 ```
 14.
+Obtain a list, in alphabetical order, of actors who've had at least 30 starring roles.
 ```sql
+SELECT name 
+FROM (actor JOIN casting ON actor.id = actorid) 
+WHERE ord = '1'
+GROUP BY name
+having COUNT(name) >= 30
 ```
+15.
+List the films released in the year 1978 ordered by the number of actors in the cast.
+```sql
+SELECT title, COUNT(actorid) as number
+FROM movie join casting ON movieid=movie.id
+WHERE yr=1978
+GROUP BY title
+ORDER BY number DESC
+```
+16.
+```sql
+SELECT name 
+FROM actor JOIN casting ON actor.id=actorid
+WHERE name != 'Art Garfunkel' 
+AND movieid IN (SELECT movieid 
+                FROM casting JOIN actor ON actorid = actor.id 
+                 WHERE name = 'Art Garfunkel')
+```
+*<h4>Using Null</h4>*
 1.
+List the teachers who have NULL for their department.
 ```sql
 ```
-
+2.
+```sql
+```
 
